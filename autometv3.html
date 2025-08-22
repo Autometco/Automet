@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automet - Automatización Inteligente para tu Negocio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #0056b3;
+            --dark-color: #333;
+            --light-color: #f4f4f4;
+            --white-color: #fff;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: var(--dark-color);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* --- Header --- */
+        header {
+            background-color: var(--white-color);
+            padding: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2em;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-left: 20px;
+        }
+
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            margin-right: 20px;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-left: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.8em;
+            margin-bottom: 60px;
+            font-weight: 700;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: var(--white-color);
+            padding: 150px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .cta-button {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 1.2em;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        /* --- Services Section --- */
+        .services-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .service-card {
+            width: 30%;
+            padding: 40px;
+            background-color: var(--white-color);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+        }
+
+        .service-card i {
+            font-size: 3em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+        
+        /* --- How It Works Section --- */
+        #how-it-works {
+            background-color: var(--light-color);
+        }
+        .process-container {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 50px;
+        }
+        .process-step {
+            width: 22%;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        .process-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--white-color);
+            border: 3px solid var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+            font-size: 2.5em;
+            color: var(--primary-color);
+            transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+        }
+        .process-step:hover .process-icon {
+            transform: scale(1.1);
+            background-color: var(--primary-color);
+            color: var(--white-color);
+        }
+        .process-step h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        
+        /* --- Testimonials Section --- */
+        .testimonials-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        .testimonial-card {
+            width: 45%;
+            background: var(--white-color);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-left: 5px solid var(--primary-color);
+        }
+        .testimonial-card p {
+            font-style: italic;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        /* --- FAQ Section --- */
+        #faq {
+            background-color: var(--light-color);
+        }
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            margin-bottom: 15px;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        }
+        .faq-question {
+            width: 100%;
+            background-color: var(--white-color);
+            padding: 20px;
+            border: none;
+            text-align: left;
+            font-size: 1.2em;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--dark-color); /* <-- CAMBIO: Texto de la pregunta en negro */
+        }
+        .faq-question:after {
+            content: '+';
+            font-size: 1.5em;
+            transition: transform 0.3s ease;
+        }
+        .faq-question.active:after {
+            transform: rotate(45deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            background-color: var(--white-color);
+            padding: 0 20px;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+        .faq-answer p {
+            padding: 20px 0;
+            margin: 0;
+        }
+
+        /* --- Contact Section --- */
+        #contact {
+            color: var(--white-color);
+            /* CAMBIO: Fondo con gradiente animado */
+            background: linear-gradient(-45deg, #2c3e50, #34495e, #232526, #414345);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+        }
+        
+        form {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--white-color);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            color: var(--dark-color);
+            /* CAMBIO: Estilos para la animación de entrada */
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        form.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 10px; font-weight: 700; }
+        input, select { 
+            width: 100%; 
+            padding: 15px; 
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
+            font-size: 1em; 
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        /* CAMBIO: Efecto de foco en los campos del formulario */
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
+        }
+        
+        button { width: 100%; padding: 15px; background-color: var(--primary-color); color: var(--white-color); border: none; border-radius: 5px; font-size: 1.2em; cursor: pointer; transition: background-color 0.3s ease; }
+        button:hover { background-color: var(--secondary-color); }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #222;
+            color: var(--white-color);
+            text-align: center;
+            padding: 40px 0;
+        }
+        .social-icons a {
+            color: var(--white-color);
+            font-size: 1.8em;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+        footer p {
+            margin-top: 20px;
+        }
+
+        /* --- Animations --- */
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+
+    <header class="container">
+        <div class="logo">Automet</div>
+        <nav>
+            <ul>
+                <li><a href="#services">Servicios</a></li>
+                <li><a href="#how-it-works">Cómo Funciona</a></li>
+                <li><a href="#testimonials">Testimonios</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Automatiza tu Mundo, Desata tu Potencial</h1>
+            <p>Soluciones de automatización para empresas, locales y personas. Simplifica tareas, optimiza procesos y enfócate en lo que realmente importa.</p>
+            <a href="#contact" class="cta-button">Solicita una Cotización</a>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2>Nuestras Soluciones</h2>
+            <div class="services-grid">
+                <div class="service-card animate-on-scroll">
+                    <i class="fas fa-building"></i>
+                    <h3>Automatización Empresarial</h3>
+                    <p>Optimizamos flujos de trabajo, integramos sistemas y automatizamos tareas repetitivas para que tu empresa sea más eficiente y productiva.</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <i class="fas fa-store"></i>
+                    <h3>Automatización para Locales</h3>
+                    <p>Desde la gestión de inventario hasta la atención al cliente, implementamos soluciones que modernizan tu negocio y mejoran la experiencia.</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <i class="fas fa-user"></i>
+                    <h3>Automatización Personal</h3>
+                    <p>Simplifica tu día a día con automatizaciones para tu hogar y tus tareas personales. Gana tiempo y comodidad con nuestras soluciones a medida.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works">
+        <div class="container">
+            <h2>Nuestro Proceso</h2>
+            <div class="process-container">
+                <div class="process-step animate-on-scroll">
+                    <div class="process-icon"><i class="fas fa-comments"></i></div>
+                    <h3>1. Consulta</h3>
+                    <p>Analizamos tus necesidades y objetivos para entender a fondo tu proyecto.</p>
+                </div>
+                <div class="process-step animate-on-scroll">
+                    <div class="process-icon"><i class="fas fa-drafting-compass"></i></div>
+                    <h3>2. Diseño</h3>
+                    <p>Creamos un plan de automatización a medida, detallando la tecnología y el flujo de trabajo.</p>
+                </div>
+                <div class="process-step animate-on-scroll">
+                    <div class="process-icon"><i class="fas fa-cogs"></i></div>
+                    <h3>3. Implementación</h3>
+                    <p>Ponemos en marcha la solución, configurando e integrando todos los componentes.</p>
+                </div>
+                <div class="process-step animate-on-scroll">
+                    <div class="process-icon"><i class="fas fa-headset"></i></div>
+                    <h3>4. Soporte</h3>
+                    <p>Te ofrecemos soporte continuo y mantenimiento para garantizar un rendimiento óptimo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials">
+        <div class="container">
+            <h2>Lo que dicen nuestros clientes</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card animate-on-scroll">
+                    <p>"El equipo de Automet transformó nuestra logística. Ahora procesamos el doble de pedidos con la mitad del esfuerzo. ¡Increíble!"</p>
+                    <span class="testimonial-author">- CEO, Logística Rápida</span>
+                </div>
+                <div class="testimonial-card animate-on-scroll">
+                    <p>"La automatización de mi cafetería me liberó tiempo para enfocarme en mis clientes. El control de inventario es ahora un juego de niños."</p>
+                    <span class="testimonial-author">- Dueña, Café del Sol</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="container">
+            <h2>Preguntas Frecuentes</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">¿Cuánto tiempo tarda un proyecto de automatización?</button>
+                    <div class="faq-answer">
+                        <p>El tiempo varía según la complejidad. Un proyecto simple puede tomar de 1 a 2 semanas, mientras que integraciones empresariales complejas pueden llevar varios meses. Siempre establecemos un cronograma claro desde el inicio.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">¿Necesito conocimientos técnicos?</button>
+                    <div class="faq-answer">
+                        <p>No. Nos encargamos de toda la complejidad técnica. Nuestro objetivo es entregarte una solución fácil de usar y gestionar. Ofrecemos la formación necesaria para que tú y tu equipo se sientan cómodos con el nuevo sistema.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">¿Cuál es el retorno de la inversión?</button>
+                    <div class="faq-answer">
+                        <p>La mayoría de nuestros clientes ven un retorno de la inversión (ROI) en menos de un año, gracias al aumento de la productividad, la reducción de errores humanos y la optimización de recursos. Cada caso es único y te ayudaremos a calcular una estimación para tu proyecto.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Hablemos de tu Proyecto</h2>
+            <form>
+                <div class="form-group"><label for="company-name">Nombre de la Empresa (Opcional)</label><input type="text" id="company-name" name="company-name"></div>
+                <div class="form-group"><label for="business-type">Negocio al que quieres aplicar la automatización</label><input type="text" id="business-type" name="business-type" required></div>
+                <div class="form-group"><label for="first-name">Nombre</label><input type="text" id="first-name" name="first-name" required></div>
+                <div class="form-group"><label for="last-name">Apellido</label><input type="text" id="last-name" name="last-name" required></div>
+                <div class="form-group"><label for="email">Correo Electrónico</label><input type="email" id="email" name="email" required></div>
+                <button type="submit">Enviar Solicitud</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>&copy; 2025 Automet. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- FAQ Accordion Script ---
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isActive = question.classList.contains('active');
+                
+                // Optional: Close other open questions
+                faqQuestions.forEach(q => {
+                    q.classList.remove('active');
+                    q.nextElementSibling.style.maxHeight = '0';
+                    q.nextElementSibling.style.padding = '0 20px';
+                });
+
+                if (!isActive) {
+                    question.classList.add('active');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    answer.style.padding = '1px 20px';
+                }
+            });
+        });
+
+        // --- Scroll Animation Script ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Animate form
+                    if (entry.target.tagName === 'FORM') {
+                        entry.target.classList.add('visible');
+                    }
+                    // Animate other elements with the specific class
+                    if (entry.target.classList.contains('animate-on-scroll')) {
+                         entry.target.classList.add('visible');
+                    }
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        // Observe elements with the class
+        const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+        elementsToAnimate.forEach((el) => observer.observe(el));
+
+        // Observe the form specifically
+        const contactForm = document.querySelector('#contact form');
+        observer.observe(contactForm);
+
+    </script>
+
+</body>
+</html>
