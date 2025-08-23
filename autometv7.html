@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automet - Automatización Potenciada por IA</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+        /* --- THEME VARIABLES (Light Mode Default) --- */
+        :root {
+            --primary-color: #007bff; --secondary-color: #0056b3; --dark-color: #333;
+            --light-color: #f4f4f4; --white-color: #fff; --body-bg: #f0f2f5;
+            --header-shadow: rgba(0,0,0,0.1); --card-shadow: rgba(0,0,0,0.1);
+        }
+
+        body { font-family: 'Roboto', sans-serif; margin: 0; padding: 0; background-color: var(--body-bg); color: var(--dark-color); overflow-x: hidden; scroll-behavior: smooth; }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+
+        /* --- Header --- */
+        header { background-color: var(--white-color); padding: 15px 0; box-shadow: 0 2px 4px var(--header-shadow); position: sticky; top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 2em; font-weight: 700; color: var(--dark-color); margin-left: 20px; }
+        nav { margin-right: 20px; }
+        nav ul { margin: 0; padding: 0; list-style: none; }
+        nav ul li { display: inline-block; margin-left: 25px; }
+        nav a { text-decoration: none; color: #555; font-weight: 700; transition: color 0.3s ease; }
+        nav a:hover { color: var(--primary-color); }
+        .menu-toggle { display: none; font-size: 1.8em; background: none; border: none; color: var(--dark-color); cursor: pointer; margin-right: 20px; }
+        
+        section { padding: 80px 0; }
+        section h2 { text-align: center; font-size: 2.8em; margin-bottom: 60px; font-weight: 700; }
+
+        /* --- Hero Section --- */
+        .hero { background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover; color: #fff; padding: 150px 0; text-align: center; }
+        .hero h1 { font-size: 3.5em; margin-bottom: 20px; }
+        .hero p { font-size: 1.5em; max-width: 800px; margin: 0 auto 40px; }
+        .cta-button { background-color: var(--primary-color); color: #fff; padding: 15px 30px; text-decoration: none; font-size: 1.2em; border-radius: 5px; transition: background-color 0.3s ease, transform 0.3s ease; }
+        .cta-button:hover { background-color: var(--secondary-color); transform: translateY(-3px); }
+
+        /* --- Services Section --- */
+        .services-grid { display: flex; justify-content: center; gap: 30px; }
+        .service-card { width: 30%; padding: 40px; background-color: var(--white-color); box-shadow: 0 4px 8px var(--card-shadow); border-radius: 10px; transition: transform 0.4s ease, box-shadow 0.4s ease; text-align: center; }
+        .service-card:hover { transform: translateY(-10px); box-shadow: 0 12px 24px var(--card-shadow); }
+        .service-card i { font-size: 3em; color: var(--primary-color); margin-bottom: 20px; }
+        .service-card h3 { font-size: 1.8em; margin-bottom: 20px; }
+        
+        /* --- NUEVA SECCIÓN: AI Power --- */
+        #ai-power { background-color: #1a1a1a; color: #f0f0f0; }
+        .ai-grid { display: flex; justify-content: center; gap: 30px; }
+        .ai-feature-card { width: 30%; background-color: #2a2a2a; padding: 40px; border-radius: 10px; text-align: center; border: 1px solid #444; transition: transform 0.3s ease, border-color 0.3s ease; }
+        .ai-feature-card:hover { transform: translateY(-10px); border-color: var(--primary-color); }
+        .ai-feature-card i { font-size: 3em; color: var(--primary-color); margin-bottom: 20px; }
+        .ai-feature-card h3 { font-size: 1.8em; margin-bottom: 15px; }
+
+        /* --- How It Works Section --- */
+        #how-it-works { background-color: var(--light-color); }
+        .process-container { display: flex; justify-content: space-between; margin-top: 50px; }
+        .process-step { width: 22%; text-align: center; }
+        .process-icon { width: 80px; height: 80px; background-color: var(--white-color); border: 3px solid var(--primary-color); border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 20px; font-size: 2.5em; color: var(--primary-color); transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease; }
+        .process-step:hover .process-icon { background-color: var(--primary-color); color: var(--white-color); transform: scale(1.1); }
+        .process-step h3 { font-size: 1.5em; margin-bottom: 10px; }
+        
+        /* --- Testimonials Section --- */
+        .testimonials-grid { display: flex; justify-content: center; gap: 30px; }
+        .testimonial-card { width: 45%; background: var(--white-color); padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px var(--card-shadow); border-left: 5px solid var(--primary-color); }
+        .testimonial-card p { font-style: italic; font-size: 1.1em; margin-bottom: 20px; }
+        .testimonial-author { font-weight: bold; color: var(--primary-color); }
+
+        /* --- FAQ Section --- */
+        #faq { background-color: var(--light-color); }
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item { margin-bottom: 15px; border-radius: 5px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.08); }
+        .faq-question { width: 100%; background-color: var(--white-color); padding: 20px; border: none; text-align: left; font-size: 1.2em; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: var(--dark-color); }
+        .faq-question:after { content: '+'; font-size: 1.5em; transition: transform 0.3s ease; }
+        .faq-question.active:after { transform: rotate(45deg); }
+        .faq-answer { max-height: 0; overflow: hidden; background-color: var(--white-color); padding: 0 20px; transition: max-height 0.4s ease, padding 0.4s ease; }
+        .faq-answer p { padding: 20px 0; margin: 0; }
+
+        /* --- CAMBIO: Contact Section con fondo de tonos OSCUROS animado --- */
+        #contact {
+            color: #fff;
+            background: linear-gradient(-45deg, #232526, #414345, #2c3e50, #16222A);
+            background-size: 400% 400%;
+            animation: darkGradientAnimation 18s ease infinite;
+        }
+        @keyframes darkGradientAnimation {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        form { max-width: 800px; margin: 0 auto; background-color: var(--white-color); padding: 40px; border-radius: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); color: var(--dark-color); }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 10px; font-weight: 700; }
+        input, select { width: 100%; padding: 15px; border: 1px solid #ccc; border-radius: 5px; font-size: 1em; box-sizing: border-box; transition: border-color 0.3s ease, box-shadow 0.3s ease; background-color: #fff; color: #333; }
+        input:focus, select:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25); }
+        button[type="submit"] { width: 100%; padding: 15px; background-color: var(--primary-color); color: #fff; border: none; border-radius: 5px; font-size: 1.2em; cursor: pointer; transition: background-color 0.3s ease; }
+        button[type="submit"]:hover { background-color: var(--secondary-color); }
+
+        /* --- Footer --- */
+        footer { background-color: #222; color: #fff; text-align: center; padding: 40px 0; }
+        .social-icons a { color: #fff; font-size: 1.8em; margin: 0 15px; transition: color 0.3s ease; }
+        .social-icons a:hover { color: var(--primary-color); }
+        footer p { margin-top: 20px; }
+
+        /* --- Animations --- */
+        .animate-on-scroll { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+        
+        /* --- AUTOMATIC DARK MODE --- */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary-color: #0d8eff; --dark-color: #f0f0f0; --light-color: #1e1e1e;
+                --white-color: #2a2a2a; --body-bg: #121212; --header-shadow: rgba(255,255,255,0.1);
+                --card-shadow: rgba(0,0,0,0.4);
+            }
+            nav a { color: #aaa; }
+            input, select { background-color: #333; color: #f0f0f0; border-color: #555; }
+        }
+
+        /* --- RESPONSIVE STYLES (Mobile) --- */
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            nav { position: fixed; top: 0; right: -100%; width: 70%; height: 100vh; background-color: var(--white-color); box-shadow: -5px 0 15px rgba(0,0,0,0.2); transition: right 0.4s ease-in-out; flex-direction: column; padding-top: 60px; }
+            @media (prefers-color-scheme: dark) { nav { background-color: #1c1c1c; } }
+            nav.active { right: 0; }
+            nav ul { flex-direction: column; width: 100%; }
+            nav ul li { display: block; margin: 20px 0; text-align: center; }
+            nav a { color: var(--dark-color); font-size: 1.5em; }
+            
+            section { padding: 60px 0; }
+            section h2 { font-size: 2.2em; }
+            .hero h1 { font-size: 2.5em; }
+            .hero p { font-size: 1.2em; }
+
+            .services-grid, .ai-grid, .process-container, .testimonials-grid { flex-direction: column; align-items: center; }
+            .service-card, .ai-feature-card, .process-step, .testimonial-card { width: 90%; margin-bottom: 30px; }
+            .testimonial-card { width: 100%; box-sizing: border-box; }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+
+    <header class="container">
+        <div class="logo">Automet</div>
+        <button class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></button>
+        <nav id="main-nav">
+            <ul>
+                <li><a href="#services">Servicios</a></li>
+                <li><a href="#ai-power">IA</a></li>
+                <li><a href="#how-it-works">Proceso</a></li>
+                <li><a href="#testimonials">Testimonios</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>El Futuro es Autónomo. Potenciamos tu Negocio con IA.</h1>
+            <p>Usamos el poder de la Inteligencia Artificial para crear automatizaciones que piensan, aprenden y optimizan por ti.</p>
+            <a href="#contact" class="cta-button">Diseña tu Solución de IA</a>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container"><h2>Nuestras Soluciones de Automatización Inteligente</h2><div class="services-grid">
+            <div class="service-card animate-on-scroll"><i class="fas fa-brain"></i><h3>IA para Empresas</h3><p>Implementamos soluciones de Análisis Predictivo y optimización de cadenas de suministro para máxima eficiencia.</p></div>
+            <div class="service-card animate-on-scroll"><i class="fas fa-store-alt"></i><h3>IA para Locales</h3><p>Automatizamos el inventario con Visión por Computadora y mejoramos la atención con Chatbots Inteligentes.</p></div>
+            <div class="service-card animate-on-scroll"><i class="fas fa-user-cog"></i><h3>IA para el Día a Día</h3><p>Creamos asistentes personales y sistemas de domótica que se anticipan a tus necesidades y simplifican tu vida.</p></div>
+        </div></div>
+    </section>
+
+    <section id="ai-power">
+        <div class="container"><h2>El Poder de la Inteligencia Artificial</h2><div class="ai-grid">
+            <div class="ai-feature-card animate-on-scroll"><i class="fas fa-chart-line"></i><h3>Análisis Predictivo</h3><p>Nuestra IA analiza tus datos para predecir tendencias, optimizar inventarios y tomar decisiones más inteligentes.</p></div>
+            <div class="ai-feature-card animate-on-scroll"><i class="fas fa-magic"></i><h3>Optimización de Procesos</h3><p>Identificamos cuellos de botella y rediseñamos flujos de trabajo que se optimizan a sí mismos en tiempo real.</p></div>
+            <div class="ai-feature-card animate-on-scroll"><i class="fas fa-user-friends"></i><h3>Experiencias Personalizadas</h3><p>Desde chatbots que entienden el contexto hasta recomendaciones de productos, creamos interacciones únicas para tus clientes.</p></div>
+        </div></div>
+    </section>
+
+    <section id="how-it-works">
+        <div class="container"><h2>Nuestro Proceso</h2><div class="process-container">
+            <div class="process-step animate-on-scroll"><div class="process-icon"><i class="fas fa-comments"></i></div><h3>1. Consulta</h3><p>Analizamos tus necesidades y los puntos clave donde la IA puede generar el mayor impacto.</p></div>
+            <div class="process-step animate-on-scroll"><div class="process-icon"><i class="fas fa-drafting-compass"></i></div><h3>2. Diseño a Medida</h3><p>Creamos la arquitectura de tu solución de IA, seleccionando los modelos y tecnologías adecuadas.</p></div>
+            <div class="process-step animate-on-scroll"><div class="process-icon"><i class="fas fa-cogs"></i></div><h3>3. Implementación</h3><p>Entrenamos, integramos y desplegamos el sistema de IA en tu entorno de trabajo actual.</p></div>
+            <div class="process-step animate-on-scroll"><div class="process-icon"><i class="fas fa-sync-alt"></i></div><h3>4. Soporte y Evolución</h3><p>Monitoreamos el rendimiento y re-entrenamos los modelos para una mejora continua.</p></div>
+        </div></div>
+    </section>
+
+    <section id="testimonials">
+        <div class="container"><h2>Lo que dicen nuestros clientes</h2><div class="testimonials-grid">
+            <div class="testimonial-card animate-on-scroll"><p>"La IA de Automet no solo automatizó, sino que optimizó. Nuestras previsiones de ventas son ahora un 95% más precisas."</p><span class="testimonial-author">- CFO, Tech Distribution Inc.</span></div>
+            <div class="testimonial-card animate-on-scroll"><p>"El chatbot que implementaron entiende a mis clientes mejor que algunos de mis empleados. Las ventas online se dispararon."</p><span class="testimonial-author">- Fundadora, Boutique Elara</span></div>
+        </div></div>
+    </section>
+
+    <section id="faq">
+        <div class="container"><h2>Preguntas Frecuentes</h2><div class="faq-container">
+            <div class="faq-item"><button class="faq-question">¿En qué se diferencia la IA de la automatización tradicional?</button><div class="faq-answer"><p>La automatización tradicional sigue reglas fijas (si pasa X, haz Y). La IA va más allá: aprende de los datos, reconoce patrones y toma decisiones complejas para adaptarse a nuevas situaciones sin ser reprogramada.</p></div></div>
+            <div class="faq-item"><button class="faq-question">¿Mi empresa es demasiado pequeña para usar IA?</button><div class="faq-answer"><p>No en absoluto. Existen soluciones de IA escalables para todo tipo de negocios. Desde un chatbot para una tienda online hasta la optimización de rutas para un pequeño servicio de reparto, la IA puede ofrecer un gran retorno de la inversión.</p></div></div>
+            <div class="faq-item"><button class="faq-question">¿Es seguro implementar estas soluciones?</button><div class="faq-answer"><p>La seguridad y la privacidad de los datos son nuestra máxima prioridad. Diseñamos todos nuestros sistemas siguiendo las mejores prácticas de la industria para garantizar que tu información y la de tus clientes estén siempre protegidas.</p></div></div>
+        </div></div>
+    </section>
+
+    <section id="contact">
+        <div class="container"><h2>Hablemos de tu Proyecto de IA</h2>
+            <form class="animate-on-scroll">
+                <div class="form-group"><label for="company-name">Nombre de la Empresa (Opcional)</label><input type="text" id="company-name" name="company-name"></div>
+                <div class="form-group"><label for="business-type">Negocio al que quieres aplicar la automatización con IA</label><input type="text" id="business-type" name="business-type" required></div>
+                <div class="form-group"><label for="first-name">Nombre</label><input type="text" id="first-name" name="first-name" required></div>
+                <div class="form-group"><label for="last-name">Apellido</label><input type="text" id="last-name" name="last-name" required></div>
+                <div class="form-group"><label for="email">Correo Electrónico</label><input type="email" id="email" name="email" required></div>
+                <button type="submit">Solicitar Consulta IA</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container"><div class="social-icons">
+            <a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a>
+        </div><p>&copy; 2025 Automet. Pioneros en Automatización Inteligente.</p></div>
+    </footer>
+
+    <script>
+        // --- Mobile Menu (Hamburger) Script ---
+        const menuToggle = document.getElementById('menu-toggle');
+        const mainNav = document.getElementById('main-nav');
+        const navLinks = mainNav.querySelectorAll('a');
+        menuToggle.addEventListener('click', () => mainNav.classList.toggle('active'));
+        navLinks.forEach(link => link.addEventListener('click', () => mainNav.classList.remove('active')));
+        
+        // --- FAQ Accordion Script ---
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                const answer = q.nextElementSibling;
+                const isActive = q.classList.contains('active');
+                document.querySelectorAll('.faq-question').forEach(otherQ => {
+                    otherQ.classList.remove('active');
+                    otherQ.nextElementSibling.style.maxHeight = '0';
+                    otherQ.nextElementSibling.style.padding = '0 20px';
+                });
+                if (!isActive) {
+                    q.classList.add('active');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    answer.style.padding = '1px 20px';
+                }
+            });
+        });
+
+        // --- Scroll Animation Script (REPETIBLE) ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-on-scroll').forEach((el) => observer.observe(el));
+    </script>
+
+</body>
+</html>
